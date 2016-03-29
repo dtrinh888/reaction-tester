@@ -1,0 +1,12 @@
+{
+  "name": "reaction-tester",
+  "version": "1.0.0",
+  "description": "reaction tester game",
+  "main": "index.js",
+  "scripts": {
+    "mkdir": "mkdir -p build",
+    "clean": "rm -rf build"
+  },
+  "author": "David Trinh",
+  "license": "ISC"
+}
