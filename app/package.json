@@ -8,7 +8,8 @@
     "build": "npm run clean && npm run mkdir && npm run build:html",
     "watch": "npm run watch:html",
     "clean": "rm -rf build",
-    "push": "npm run git:gh-pages && npm run git:add && npm run git:commit && npm run git:push",
+    "push": "npm run git:gh-pages && npm run git:add && npm run git:commit && npm run git:gh-push",
+    "rebase": "npm run git:master && npm run git:rebase && npm run git:master-push && npm run git:gh-pages",
     "build:html": "npm run clean:html && cp index.html build/",
     "watch:html": "npm run build:html && chokidar index.html -c 'npm run build:html'",
     "clean:html": "rm -f build/index.html",
@@ -18,7 +19,10 @@
     "git:gh-pages": "git checkout gh-pages",
     "git:add": "git add .",
     "git:commit": "git commit -m 'NPM installed'",
-    "git:push": "git push origin gh-pages"
+    "git:gh-push": "git push origin gh-pages",
+    "git:master": "git checkout master",
+    "git:rebase": "git rebase gh-pages",
+    "git:master-push": "git push origin master"
   },
   "author": "David Trinh",
   "license": "ISC",
