@@ -5,8 +5,25 @@
   "main": "index.js",
   "scripts": {
     "mkdir": "mkdir -p build",
-    "clean": "rm -rf build"
+    "build": "npm run clean && npm run mkdir && npm run build:html",
+    "watch": "npm run watch:html",
+    "clean": "rm -rf build",
+    "push": "npm run git:gh-pages && npm run git:add && npm run git:commit && npm run git:push",
+    "build:html": "npm run clean:html && cp index.html build/",
+    "watch:html": "npm run build:html && chokidar index.html -c 'npm run build:html'",
+    "clean:html": "rm -f build/index.html",
+    "build:css": "npm run clean:css && lessc --source-map css/index.less build/$npm_package_name.$npm_package_version.css",
+    "watch:css": "npm run build:css && chokidar 'css/**/*.less' -c 'npm run build:css'",
+    "": "",
+    "git:gh-pages": "git checkout gh-pages",
+    "git:add": "git add .",
+    "git:commit": "git commit -m 'NPM installed'",
+    "git:push": "git push origin gh-pages"
   },
   "author": "David Trinh",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "chokidar-cli": "^1.2.0",
+    "less": "^2.6.1"
+  }
 }
